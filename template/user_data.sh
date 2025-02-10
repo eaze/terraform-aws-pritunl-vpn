@@ -1,5 +1,8 @@
 #!/bin/bash -x
 
+INSTANCE_ID=$(ec2-metadata -i | cut -d':' -f 2)
+aws ec2 modify-instance-attribute --instance-id $INSTANCE_ID --region us-west-2 --no-source-dest-check
+
 sudo amazon-linux-extras install -y epel
 sudo yum update -y
 sudo yum install -y wget certbot python2-certbot-dns-route53

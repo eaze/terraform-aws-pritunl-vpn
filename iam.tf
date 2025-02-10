@@ -29,7 +29,8 @@ data "aws_iam_policy_document" "this" {
     effect = "Allow"
     actions = [
       "route53:ListHostedZones",
-      "route53:GetChange"
+      "route53:GetChange",
+      "ec2:ModifyInstanceAttribute" # allow disabling source/destination check
     ]
     resources = ["*"]
   }
